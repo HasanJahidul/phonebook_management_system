@@ -1,7 +1,6 @@
 from menus import *
 from phoneBook import *
 from validation import *
-import pickle as pickle
 import pandas as pd
 
 import json
@@ -52,8 +51,8 @@ def add_contact():
         # with open('Contacts.txt', 'w') as file:
         #     # use `json.loads` to do the reverse
         #     file.write(json.dumps(phoneBook))
-        Dict = dict({name: {"name": name, "phone": [phone, ""],
-                    "address": address, "email": email}})
+        Dict[name] = dict({"name": name, "phone": [phone, ],
+                           "address": address, "email": email})
         # print(Dict)
         # f = open("Contacts.txt","w")
         # f.write( str(Dict) )
@@ -72,7 +71,7 @@ def add_contact():
                     except Exception:
                         print("something went wrong")
                 #Dict["phone"] = phone2
-                add_values_in_dict(Dict, "phone", [phone2, ""])
+                add_values_in_dict(Dict[name], "phone", [phone2])
                 print("\n{phone} has been added to the phonebook".format(
                     phone=phone))
                 print(Dict)
@@ -81,15 +80,16 @@ def add_contact():
                 # print(df)
                 # for key, value in Dict.items():
                 #     print(key+" : "+value+"\n")
+                break
 
             elif add_more == 'n':
 
-                Dict = dict({name: {"name": name, "phone": [
-                            phone], "address": address, "email": email}})
+                Dict[name] = dict(
+                    {"name": name, "phone": [phone], "address": address, "email": email})
                 print(Dict)
-                df = pd.DataFrame(Dict).T
-                df.fillna(1, inplace=True)
-                print(df)
+                # df = pd.DataFrame(Dict).T
+                # df.fillna(1, inplace=True)
+                # print(df)
                 # for key, value in Dict.items():
                 #     print(key+" : "+value+"\n")
                 break
