@@ -1,8 +1,149 @@
-from add_contact import Dict, add_values_in_dict
-from validation import *
+from refactor import *
 import pandas as pd
+from menus import *
 
-#search an existing contact
+import json
+
+# Creating an empty Dictionary
+Dict = {}
+phoneBook = {}
+# add person to phonebook
+
+
+def add_contact():
+    # printing menu from menus.py
+    add_person_menu()
+    menu = input("Please enter a menu number: ")
+    if menu == '1':
+        # name validation
+        name = input("Please enter the name: ")
+        input_name(name)
+        # number validation
+        phone = input("Please enter the phone number: ")
+        input_number(phone)
+        address = input("Please enter the address: ")
+        # address validation
+        input_address(address)
+        email = input("Please enter the email: ")
+        # email validation
+        input_email(email)
+        # add to phonebook
+        #phoneBook.append([name, phone, address, email])
+        print("\n{name} has been added to the phonebook".format(name=name))
+        # with open('Contacts.txt', 'w') as file:
+        #     # use `json.loads` to do the reverse
+        #     file.write(json.dumps(phoneBook))
+        Dict[name] = dict({"name": name, "phone": [phone, ],
+                           "address": address, "email": email})
+        # print(Dict)
+        # f = open("Contacts.txt","w")
+        # f.write( str(Dict) )
+        # f.close()
+        # with open('myfile.txt', 'w') as f:
+        #     print(Dict, file=f)
+
+        # add multiple numbers
+        while True:
+            add_more = input("Would you like to add another number? (y/n): ")
+            if add_more == 'y':
+                phone2 = input("Please enter the phone number: ")
+                while check_number(phone2) != True:
+                    try:
+                        phone2 = input("Please enter phone number again: ")
+                    except Exception:
+                        print("something went wrong")
+                #Dict["phone"] = phone2
+                add_values_in_dict(Dict[name], "phone", [phone2])
+                print("\n{phone} has been added to the phonebook".format(
+                    phone=phone))
+                break
+
+            elif add_more == 'n':
+                Dict[name] = dict(
+                    {"name": name, "phone": [phone], "address": address, "email": email})
+                break
+            else:
+                print("Invalid response")
+                add_person_menu()
+                add_contact()
+
+        #print("The entry has been added")
+    elif menu == '2':
+        print("\nThe entry has been deleted")
+        main_menu()
+    else:
+        print("Invalid menu number")
+        add_person_menu()
+        add_contact()
+
+# function to add multiple values
+def add_values_in_dict(dic, key, list_of_values):
+    """Append multiple values to a key in the given dictionary"""
+    if key not in dic:
+        dic[key] = list()
+    dic[key].extend(list_of_values)
+    return dic
+
+
+# update contact
+def update_contact():
+    search_key = input("Please enter the name: ")
+    for key, value in Dict.items():
+        if search_key.lower() == key.lower():
+            print("Name:", value["name"])
+            print("Phone:", value["phone"])
+            print("Address:", value["address"])
+            print("Email:", value["email"])
+            update_menu()
+            menu = input("Please enter a menu number: ")
+            if menu == '1':
+                # update name
+                new_name = input("Please enter the updated name: ")
+                if input_name(new_name) == True:
+                    Dict[key] ["name"]= new_name
+                    print("Name updated")
+                else:
+                    print("Name not updated")
+            elif menu == '2':
+                # update phone
+                phone = input("Please enter the phone number: ")
+                if input_number(phone) == True:
+                    Dict[search_key] ["name"]= phone
+                    print("Phone updated")
+                else:
+                    print("Phone not updated")
+            elif menu == '3':
+                # update address
+                address = input("Please enter the address: ")
+                if input_address(address) == True:
+                    Dict[search_key]["address"] = address
+                    print("Address updated")
+                else:
+                    print("Address not updated")
+            elif menu == '4':
+                # update email
+                email = input("Please enter the email: ")
+                if input_email(email) == True:
+                    Dict[search_key]["email"] = email
+                    print("Email updated")
+                else:
+                    print("Email not updated")
+            elif menu == '5':
+                # update multiple numbers
+                add_more_numbers()
+            elif menu == '6':
+                break
+            else:
+                print("Invalid menu number")
+                update_menu()
+                update_contact()
+            # print("\n{new_name} has been updated in the phonebook".format(
+            #     name=new_name))
+        else:
+            print("Name not found")
+
+
+# search an existing contact
 def search():
     name = input("Please enter the name: ")
     for key, value in Dict.items():
@@ -16,6 +157,8 @@ def search():
         print("Name not found")
 
 # remove contact
+
+
 def remove_contact():
     name = input("Please enter the name: ")
     for key, value in Dict.items():
@@ -63,6 +206,8 @@ def show_all_contacts():
         for key, value in value.items():
             print(key+": ", value)
 # export to txt file
+
+
 def export_to_file():
     with open('Contacts.txt', 'w') as f:
         count = 0
