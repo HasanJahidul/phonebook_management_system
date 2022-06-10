@@ -219,6 +219,8 @@ def export_to_file():
             for key, value in value.items():
                 print(key+": ", value, file=f)
     print("Contacts exported")
+    main_menu()
+    user_choice()
 
 # user main menu input
 
