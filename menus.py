@@ -1,6 +1,8 @@
 
 import sys
 # add person menu
+
+
 def add_person_menu():
     print("""
     1. Add a new person
@@ -22,8 +24,6 @@ def main_menu():
 	8. Exit phonebook""")
 
 
-
-
 def thanks():
     # A simple gesture of courtesy towards the user to enhance user experience
     print("********************************************************************")
@@ -42,3 +42,5 @@ def update_menu():
 	5. Add another number
 	6. Return to main menu
 	""")
+
+

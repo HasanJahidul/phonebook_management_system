@@ -29,3 +29,10 @@ def input_email(email):
             email = input("Please enter email again: ")
         except Exception:
             print("something went wrong")
+
+def check_empty_dict(Dict):
+    if len(Dict) == 0:
+        print("No contacts in the phonebook\n Please add a contact")
+        return False
+    else:
+        return True

@@ -1,3 +1,4 @@
+
 # number validation
 def check_number(number):
     if len(number) != 11 or number.strip().isdigit() == False:
@@ -31,3 +32,5 @@ def address_validation(address):
         print("\n{address} is an unaccepted response".format(address=address))
     else:
         return True
+
+

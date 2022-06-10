@@ -1,6 +1,5 @@
 from refactor import *
-import pandas as pd
-from menus import *
+from menus import add_person_menu, update_menu, main_menu, thanks
 
 import json
 
@@ -65,18 +64,18 @@ def add_contact():
             else:
                 print("Invalid response")
                 add_person_menu()
-                add_contact()
 
         #print("The entry has been added")
     elif menu == '2':
-        print("\nThe entry has been deleted")
         main_menu()
+        user_choice()
     else:
         print("Invalid menu number")
         add_person_menu()
-        add_contact()
 
 # function to add multiple values
+
+
 def add_values_in_dict(dic, key, list_of_values):
     """Append multiple values to a key in the given dictionary"""
     if key not in dic:
@@ -100,7 +99,7 @@ def update_contact():
                 # update name
                 new_name = input("Please enter the updated name: ")
                 if input_name(new_name) == True:
-                    Dict[key] ["name"]= new_name
+                    Dict[key]["name"] = new_name
                     print("Name updated")
                 else:
                     print("Name not updated")
@@ -108,7 +107,7 @@ def update_contact():
                 # update phone
                 phone = input("Please enter the phone number: ")
                 if input_number(phone) == True:
-                    Dict[search_key] ["name"]= phone
+                    Dict[search_key]["name"] = phone
                     print("Phone updated")
                 else:
                     print("Phone not updated")
@@ -217,3 +216,57 @@ def export_to_file():
             for key, value in value.items():
                 print(key+": ", value, file=f)
     print("Contacts exported")
+
+# user main menu input
+
+
+def user_choice():
+    menu = input("Please enter a menu number: ")
+    while menu != '8':
+        if menu == '1':
+            add_contact()
+        elif menu == '2':
+            if check_empty_dict(Dict) == True:
+                update_contact()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        elif menu == '3':
+            if check_empty_dict(Dict) == True:
+                remove_contact()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        elif menu == '4':
+            if check_empty_dict(Dict) == True:
+                remove_all_contacts()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        elif menu == '5':
+            if check_empty_dict(Dict) == True:
+                search()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        elif menu == '6':
+            if check_empty_dict(Dict) == True:
+                show_all_contacts()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        elif menu == '7':
+            if check_empty_dict(Dict) == True:
+                export_to_file()
+            else:
+                print("Phonebook is empty")
+                main_menu()
+                user_choice()
+        else:
+            print("Invalid menu number")
+    thanks()
