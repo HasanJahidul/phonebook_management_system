@@ -54,25 +54,9 @@ def add_more_numbers():
     else:
         print("Name not found")
 
-# display all contacts
+# Show all contacts
 
 
-def all_values(dict_obj):
-    ''' This function generates all values of
-        a nested dictionary. 
-    '''
-    # Iterate over all values of the dictionary
-    for key, value in dict_obj.items():
-        # If value is of dictionary type then yield all values
-        # in that nested dictionary
-        if isinstance(value, dict):
-            for v in all_values(value):
-                yield v
-        else:
-            yield value
-
-
-# show all contacts from level to dictionary
 def show_all_contacts():
     count = 0
     for key, value in Dict.items():
@@ -80,3 +64,15 @@ def show_all_contacts():
         print(count)
         for key, value in value.items():
             print(key+": ", value)
+# export to txt file
+
+
+def export_to_file():
+    with open('Contacts.txt', 'w') as f:
+        count = 0
+        for key, value in Dict.items():
+            count += 1
+            print(str(count)+".", file=f)
+            for key, value in value.items():
+                print(key+": ", value, file=f)
+    print("Contacts exported")

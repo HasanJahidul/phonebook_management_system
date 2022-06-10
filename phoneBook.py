@@ -18,6 +18,8 @@ def main():
             search()
         elif menu == '5':
             show_all_contacts()
+        elif menu == '6':
+            export_to_file()
         else:
             print("Invalid menu number")
         menu = input("Please enter a menu number: ")
