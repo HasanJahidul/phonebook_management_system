@@ -2,27 +2,25 @@ from add_contact import Dict, add_values_in_dict
 from validation import *
 import pandas as pd
 
-
+#search an existing contact
 def search():
     name = input("Please enter the name: ")
-    for entry in Dict:
-        if name == entry[0]:
-            print("Name:", entry[0])
-            print("Phone:", entry[1])
-            print("Address:", entry[2])
-            print("Email:", entry[3])
+    for key, value in Dict.items():
+        if name.lower() == key.lower():
+            print("Name:", key)
+            print("Phone:", value["phone"])
+            print("Address:", value["address"])
+            print("Email:", value["email"])
             break
     else:
         print("Name not found")
 
 # remove contact
-
-
 def remove_contact():
     name = input("Please enter the name: ")
-    for entry in Dict:
-        if name == entry[0]:
-            Dict.remove(entry)
+    for key, value in Dict.items():
+        if name.lower() == key.lower():
+            del Dict[key]
             print("Contact removed")
             break
     else:
@@ -65,8 +63,6 @@ def show_all_contacts():
         for key, value in value.items():
             print(key+": ", value)
 # export to txt file
-
-
 def export_to_file():
     with open('Contacts.txt', 'w') as f:
         count = 0

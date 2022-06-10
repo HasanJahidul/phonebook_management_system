@@ -95,13 +95,16 @@ def add_contact():
                 break
             else:
                 print("Invalid response")
+                add_person_menu()
                 add_contact()
 
         #print("The entry has been added")
     elif menu == '2':
+        print("\nThe entry has been deleted")
         main()
     else:
         print("Invalid menu number")
+        add_person_menu()
         add_contact()
 # function to add multiple values
 

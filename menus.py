@@ -15,7 +15,8 @@ def main_menu():
 	3. Delete all contacts
 	4. Search for a contact
 	5. Display all contacts
-	6. Exit phonebook""")
+	6. Export all contacts
+	7. Exit phonebook""")
 
 def thanks():
     # A simple gesture of courtesy towards the user to enhance user experience
