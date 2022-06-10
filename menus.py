@@ -16,3 +16,11 @@ def main_menu():
 	4. Search for a contact
 	5. Display all contacts
 	6. Exit phonebook""")
+
+def thanks():
+    # A simple gesture of courtesy towards the user to enhance user experience
+	print("********************************************************************")
+	print("Thank you for using our Smartphone directory system.")
+	print("Please visit again!")
+	print("********************************************************************")
+	sys.exit("Goodbye, have a nice day ahead!")

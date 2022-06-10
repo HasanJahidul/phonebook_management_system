@@ -3,6 +3,7 @@ import json
 from add_contact import add_contact
 from functions import *
 
+
 def main():
     main_menu()
     menu = input("Please enter a menu number: ")
@@ -16,11 +17,11 @@ def main():
         elif menu == '4':
             search()
         elif menu == '5':
-           display_all_contacts_in_df() 
+            show_all_contacts()
         else:
             print("Invalid menu number")
         menu = input("Please enter a menu number: ")
-    print("Goodbye")
+    thanks()
     #exDict = {'exDict': 'exDict'}
 
 

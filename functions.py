@@ -62,7 +62,7 @@ def all_values(dict_obj):
         a nested dictionary. 
     '''
     # Iterate over all values of the dictionary
-    for key , value in dict_obj.items():
+    for key, value in dict_obj.items():
         # If value is of dictionary type then yield all values
         # in that nested dictionary
         if isinstance(value, dict):
@@ -70,16 +70,13 @@ def all_values(dict_obj):
                 yield v
         else:
             yield value
-def display_all_contacts():
-    for entry in all_values(Dict):
-        print("Name:", entry[0])
-        print("Phone:", entry[1])
-        print("Address:", entry[2])
-        print("Email:", entry[3])
-        print("\n")
 
-# display all contacts in a dataframe
-def display_all_contacts_in_df():
-    df = pd.DataFrame(Dict).T
-    df.fillna(0, inplace=True)
-    print(df)
+
+# show all contacts from level to dictionary
+def show_all_contacts():
+    count = 0
+    for key, value in Dict.items():
+        count += 1
+        print(count)
+        for key, value in value.items():
+            print(key+": ", value)

@@ -227,7 +227,7 @@ def display_all(pb):
 			print(pb[i])
 
 def thanks():
-# A simple gesture of courtesy towards the user to enhance user experience
+    # A simple gesture of courtesy towards the user to enhance user experience
 	print("********************************************************************")
 	print("Thank you for using our Smartphone directory system.")
 	print("Please visit again!")
