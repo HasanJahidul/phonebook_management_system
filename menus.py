@@ -12,7 +12,7 @@ def add_person_menu():
 
 def main_menu():
     print("""********************************************************************
-    \t\t\tSMARTPHONE DIRECTORY\n********************************************************************
+    \t\t\tPhonebook Application\n********************************************************************
 	You can now perform the following operations on this phonebook\n
 	1. Add a new contact
 	2. Update an existing contact
@@ -27,7 +27,7 @@ def main_menu():
 def thanks():
     # A simple gesture of courtesy towards the user to enhance user experience
     print("********************************************************************")
-    print("Thank you for using our Smartphone directory system.")
+    print("Thank you for using our Phonebook management system.")
     print("Please visit again!")
     print("********************************************************************")
     sys.exit("Goodbye, have a nice day ahead!")

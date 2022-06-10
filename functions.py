@@ -1,3 +1,4 @@
+from pip import main
 from refactor import *
 from menus import add_person_menu, update_menu, main_menu, thanks
 
@@ -204,6 +205,8 @@ def show_all_contacts():
         print(count)
         for key, value in value.items():
             print(key+": ", value)
+    main_menu()
+    user_choice()
 # export to txt file
 
 

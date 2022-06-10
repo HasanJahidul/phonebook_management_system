@@ -8,5 +8,4 @@ def start():
     main_menu()
     user_choice()
 
-
 start()
