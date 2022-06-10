@@ -1,6 +1,6 @@
 # phonebook_management_system
 
-###Develop a phonebook management application.
+##Develop a phonebook management application.
 It should contain the following features:
 * for every person you should keep him/her name, address, email, and phone number (a person
 can have multiple phone numbers)
